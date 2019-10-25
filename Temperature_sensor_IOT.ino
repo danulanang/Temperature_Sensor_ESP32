@@ -30,8 +30,8 @@
  *************************************************************/
 
 /* Comment this out to disable prints and save space */
-#define BLYNK_PRINT Serial
 
+#define BLYNK_PRINT Serial
 
 #include <WiFi.h>
 #include <WiFiClientSecure.h>
@@ -40,11 +40,11 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 
-char auth[] = "5fL1TgeHli1DLtfGoRGzaBFB47swfGdC";
-char ssid[] = "Lantai 2";
-char pass[] = "gakbolehtau";
+char auth[] = "XXXX";               //Input your AUTH CODE here
+char ssid[] = "XXXX";               //Input your Wifi/Network Name here
+char pass[] = "XXXX";               //Input your Wifi/Network password here
 
-const int oneWireBus = 5;     
+const int oneWireBus = 5;           //gpio 5     
 OneWire oneWire(oneWireBus);
 DallasTemperature sensors(&oneWire);
 
@@ -63,7 +63,6 @@ void loop()
   sensors.requestTemperatures(); 
   float temperatureC = sensors.getTempCByIndex(0);
   Blynk.virtualWrite(V1,temperatureC);
-  Serial.println(temperatureC);
   Blynk.run();
 }
 
